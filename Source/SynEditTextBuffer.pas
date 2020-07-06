@@ -12,7 +12,7 @@ The Original Code is: SynEditTextBuffer.pas, released 2000-04-07.
 The Original Code is based on parts of mwCustomEdit.pas by Martin Waldenburg,
 part of the mwEdit component suite.
 Portions created by Martin Waldenburg are Copyright (C) 1998 Martin Waldenburg.
-Unicode translation by Maël Hörz.
+Unicode translation by MaÃ«l HÃ¶rz.
 All Rights Reserved.
 
 Contributors to the SynEdit and mwEdit projects are listed in the
@@ -1269,12 +1269,18 @@ end;
 
 function TSynEditUndoList.GetCanUndo: Boolean;
 begin
-  Result := FItems.Count > 0;
+  if assigned(FItems) then
+    Result := FItems.Count > 0
+  else
+    Result := False;
 end;
 
 function TSynEditUndoList.GetItemCount: Integer;
 begin
-  Result := FItems.Count;
+  if assigned(FItems) then
+    Result := FItems.Count
+  else
+    Result := 0;
 end;
 
 procedure TSynEditUndoList.Lock;
